@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#85c5c9"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="393dp"
+        android:layout_height="326dp"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Login"
+            android:textColor="#FAFCFB"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <EditText
+            android:id="@+id/edtuserid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#a3b7b8"
+            android:hint="USER ID"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="#a3b7b8"
+            android:hint="PASSWORD"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnlogin"
+            style="@android:style/Widget.DeviceDefault.Light.Button.Toggle"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#a3b7b8"
+            android:padding="10dp"
+            android:text="Login"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/pbbar"
+            android:layout_marginTop="30px"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center"
+            android:indeterminateTint="#ffffff"
+            android:indeterminateTintMode="src_in" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:srcCompat="@drawable/Logo"
+        tools:visibility="visible" />
+</RelativeLayout>
