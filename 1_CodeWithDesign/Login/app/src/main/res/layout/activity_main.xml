@@ -80,6 +80,6 @@
         android:layout_width="401dp"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:srcCompat="@drawable/Logo"
+        app:srcCompat="@drawable/logo"
         tools:visibility="visible" />
 </RelativeLayout>
