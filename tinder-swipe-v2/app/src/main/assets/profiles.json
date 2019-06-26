@@ -1,0 +1,44 @@
+[
+  {
+    "url": "https://images.wagwalkingweb.com/media/articles/dog/why-is-my-dog-grinding-his-teeth/why-is-my-dog-grinding-his-teeth.jpg",
+    "name": "Sofia",
+    "age": 3,
+    "location": "New York"
+  },
+  {
+    "url": "https://images.wagwalkingweb.com/media/training_guides/stop-growling-at-other-dogs/hero/How-to-Train-Your-Dog-to-Stop-Growling-at-Other-Dogs.jpg",
+    "name": "Roma",
+    "age": 4,
+    "location": "California"
+  },
+  {
+    "url": "http://wallpapersdsc.net/wp-content/uploads/2016/10/Boxer-Dog-Background.jpg",
+    "name": "Zoya",
+    "age": 5,
+    "location": "Atlantic City"
+  },
+  {
+    "url": "https://wallpapersite.com/images/wallpapers/spaniel-dog-2560x1440-puppy-hd-5123.jpg",
+    "name": "Carol",
+    "age": 6,
+    "location": "New City"
+  },
+  {
+    "url": "https://www.pets4homes.co.uk/images/articles/1593/large/7-dog-breeds-perfect-for-country-living-535a2a28a969f.jpg",
+    "name": "Jasmin",
+    "age": 7,
+    "location": "Taxes"
+  },
+  {
+    "url": "https://images.wagwalkingweb.com/media/articles/dog/why-is-my-dog-not-pooping/why-is-my-dog-not-pooping.jpg",
+    "name": "Monica",
+    "age": 8,
+    "location": "New York"
+  },
+  {
+    "url": "https://cs2.gtaall.com/screenshots/4dc09/2014-06/original/f906b6f1362d772ee1659c92460cb10712ca8d6c/188355-gta-sa-2014-06-01-16-38-25-56.jpg",
+    "name": "Phoebe",
+    "age": 9,
+    "location": "New York City"
+  }
+]
