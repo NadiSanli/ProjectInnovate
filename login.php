@@ -14,14 +14,21 @@
             //Prepares and executes SQL statement to pull all data from the user table to check values.
             $stmt = $pdo->prepare('SELECT * FROM `user` WHERE username = ?');
             $stmt->execute(array($_POST["user"]));
-            $result = $stmt->fetchAll();
+            $userResult = $stmt->fetchAll();
+
+            $stmt = $pdo->prepare('SELECT * FROM dog WHERE username = ?');
+            $stmt->execute(array($_POST["user"]));
+            $dogResult = $stmt->fetchAll();
 
             //Checks whether username and password match data from user table in database.
-            if (password_verify($_POST['pass'], $result[0][2])) {
+            if (password_verify($_POST['pass'], $userResult[0][2])) {
 
                 //Binds results to variables to be used later.
-                $_SESSION['userid'] = $result[0][0];
+                $_SESSION['userid'] = $userResult[0][0];
                 $_SESSION["username"] = $_POST["user"];
+                $_SESSION['loggedin'] = true;
+                
+
                 header("Location: index.php");
             } else {
                 echo '<script>alert("Username or password is wrong!")</script>';

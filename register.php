@@ -5,7 +5,7 @@
 
     //Checks whether submit button has been pressed.
     if (isset($_POST['register_user'])) {
-        //Checks if fields are empty, if so displays error message.
+
         $username = $_POST["user"];
         $password = $_POST["pass"];
         $email = $_POST["email"];
@@ -15,9 +15,9 @@
         $desc = $_POST["desc"];
         $age = $_POST["age"];
         $sex = $_POST["sex"];
-
         $target_dir = "images/uploads/";
 
+        //Checks if fields are empty, if so displays error message.
         if (empty($_POST['user']) || empty($_POST['pass']) || empty($_POST['email']) || empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['dogName']) || empty($_POST['desc']) || empty($_POST['age']) || empty($_FILES['image']['name'])) {
             //echo "<p>You must fill all fields to register an account</p>";
             echo '<script>alert("You must fill all fields to register an account!")</script>';
@@ -26,17 +26,19 @@
             $sql = $pdo->prepare('INSERT INTO user (username, password, email, firstName, lastName, longi, lat) VALUES (?, ?, ?, ?, ?, ?, ?)');
             $sql->execute(array($username, password_hash($password, PASSWORD_BCRYPT), $email, $firstName, $lastName, 0, 0));
 
+            //Executes SQL to select the userid you created above.
             $sql = $pdo->query("SELECT userID FROM user ORDER BY userID DESC LIMIT 1");
             $userid = $sql->fetchColumn();
             $userid_plusOne = $userid;
 
 
+            //Prepares and executes SQL statement to insert the dog information into the dog table.
             $zero = 0;
             $sql = $pdo->prepare("INSERT INTO dog (userID, breedID, name, age, sex, description) VALUES(?, ?, ?, ?, ?, ?)");
             $sql->execute(array($userid_plusOne, $zero, $dogName, $age, $sex, $desc));
 
 
-
+            //Image uploader, checks mimetype/filetype, size and whether the file is an image.
             $token = bin2hex(random_bytes(10));
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -74,6 +76,7 @@
                 $msg = '<i class="fas fa-exclamation-triangle"></i> The file is not an image.';
             }
         }
+        header("url=login.php");
 }
 ?>
 
