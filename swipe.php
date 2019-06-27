@@ -5,41 +5,61 @@ session_start();
     header('Location: login.php');
 } */
 
-if (isset($_POST["submit"])){
-
-}
 //first show match requests
 if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', '')){
     if($stmt=$db->prepare(
-        'SELECT s.dogID, d.name, d.age, d.sex, d.description, i.path, u.longi, u.lat
-         FROM swipe AS s 
-            JOIN dog AS d ON s.dogID = d.dogID 
-            JOIN user AS u ON d.userID = u.userID
-            JOIN image_class AS ic ON d.userID = ic.userID
-            JOIN image AS i ON ic.imageID = i.imageID
-            JOIN breed AS b ON d.breedID = b.breedID
-         WHERE s.dogSID = ?')){
-        if($stmt->execute(array("2"))){
+        'SELECT s.dogID, d.name, d.age, d.sex, d.description, i.path, u.longi, u.lat, s.swipeID' . /* make a row of data for each swiper  */ . '
+        FROM swipe AS s 
+           JOIN dog AS d ON s.dogID = d.dogID 
+           JOIN user AS u ON d.userID = u.userID
+           JOIN image_class AS ic ON d.userID = ic.userID
+           JOIN image AS i ON ic.imageID = i.imageID
+           JOIN breed AS b ON d.breedID = b.breedID
+        WHERE s.dogSID = ? AND NOT EXISTS(              ' . /* where swipee is current user  */ . '
+            
+            SELECT m.swipeID
+        FROM swipe AS s 
+           JOIN dog AS d ON s.dogID = d.dogID 
+           JOIN user AS u ON d.userID = u.userID
+           JOIN image_class AS ic ON d.userID = ic.userID
+           JOIN image AS i ON ic.imageID = i.imageID
+           JOIN breed AS b ON d.breedID = b.breedID
+           JOIN `match` AS m ON s.swipeID = m.swipeID   ' . /* and swiper and swipee are not already matched  */ . '
+            WHERE s.dogSID = ? 
+        )')){
+        if($stmt->execute(array("2","2"))){
             $requests = $stmt->fetchAll();
-            $stmt = NULL;
+            $stmt = NULL;       //close DB connection for security
             $db = NULL;
             //var_dump($requests);
-            //echo $requests[0][1];
+            //echo $requests[0][8];
 
-            
             $maxcount = count($requests);
             //echo $maxcount;
             $count = 0;
             getSlide($count, $requests);
 
             if((isset($_POST['like']) || isset($_POST['dislike'])) && $count < $maxcount ){
+                
+                if(isset($_POST['like'])){
+                    if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', '')){
+                        if($stmt = $db->prepare('INSERT INTO `match`(`swipeID`) VALUES (?)')){
+                            //echo $requests[$count][8];
+                            if($stmt -> execute(array($requests[$count][8]))){//insert swipeID from current Slide into new match
+                                echo 'you matched with' . $requests[$count]['name'] . '!';
+                            }else{echo'could not execute (match)';}
+                        }else{echo'could not prepare (match)';}
+                    }else{echo'could not connect to database (match)';}
+                }
+                
+
                 $count++;
                 if($count < $maxcount){
                     getSlide($count, $requests);
                     echo $count;
                 }else{
                     echo 'bruh';
-                    header('swipeNearby.php');
+                    //header('Location: swipeNearby.php');
                 }
             }elseif((isset($_POST['like']) || isset($_POST['dislike'])) && $count >= $maxcount ){
                 echo 'cant reach this';
