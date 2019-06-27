@@ -78,15 +78,20 @@ if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', ''))
             if((isset($_POST['like']) || isset($_POST['dislike'])) && $count < $maxcount ){
 
                 if(isset($_POST['like'])){
-                    $db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', '');
-                    $stmt = $db->prepare('INSERT INTO match()');
+                    if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', '')){
+                        if($stmt = $db->prepare('INSERT INTO swipe(dogID, dogSID) VALUES (?,?)')){
+                            if($stmt -> execute(array($_SESSION['dogID'],$nearby[$count][0]))){
+
+                            }else{echo'could not execute (like)';}
+                        }else{echo'could not prepare (like)';}
+                    }else{echo'could not connect to database (like)';}
                 }
                 $count++;
                 if($count < $maxcount){
                     getSlide($count, $nearby);
                     echo $count;
                 }else{
-                    echo 'bruh';
+                    echo 'out of nearby users';
                 }
             }elseif((isset($_POST['like']) || isset($_POST['dislike'])) && $count >= $maxcount ){
                 echo 'cant reach this';
