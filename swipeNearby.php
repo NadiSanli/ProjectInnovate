@@ -8,6 +8,7 @@ session_start();
 if (isset($_POST["submit"])){
 
 }
+/*
 //first show match requests
 if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', '')){
     if($stmt=$db->prepare(
@@ -39,7 +40,6 @@ if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', ''))
                     echo $count;
                 }else{
                     echo 'bruh';
-                    header('swipeNearby.php');
                 }
             }elseif((isset($_POST['like']) || isset($_POST['dislike'])) && $count >= $maxcount ){
                 echo 'cant reach this';
@@ -49,9 +49,9 @@ if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', ''))
     }else{echo'could not prepare';}
 }else{echo'could not connect to database';}
 
-
+*/
 //then show nearby users
-/*
+
 if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', '')){
     $maxlong = 0;
     $maxlat = 0;
@@ -64,7 +64,7 @@ if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', ''))
             JOIN image AS i ON ic.imageID = i.imageID
             JOIN breed AS b ON d.breedID = b.breedID
          WHERE u.longi < ? AND u.lat < ?')){
-        if($stmt->execute(array("test" , "test"))){
+        if($stmt->execute(array("5" , "5"))){
             $nearby = $stmt->fetchAll();
             $stmt = NULL;
             $db = NULL;
@@ -76,6 +76,11 @@ if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', ''))
             getSlide($count, $nearby);
 
             if((isset($_POST['like']) || isset($_POST['dislike'])) && $count < $maxcount ){
+
+                if(isset($_POST['like'])){
+                    $db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', '');
+                    $stmt = $db->prepare('INSERT INTO match()');
+                }
                 $count++;
                 if($count < $maxcount){
                     getSlide($count, $nearby);
@@ -94,7 +99,7 @@ if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', ''))
     }else{echo'could not prepare';}
 }else{echo'could not connect to database';} 
 
-*/
+
 ?>
 <form method='POST' action='<?php htmlentities($_SERVER['PHP_SELF']); ?>'>
     <input type='submit' name='like' value='like'>
