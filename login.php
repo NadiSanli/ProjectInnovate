@@ -23,8 +23,11 @@
             //Checks whether username and password match data from user table in database.
             if (password_verify($_POST['pass'], $userResult[0][2])) {
 
+
                 //Binds results to variables to be used later.
                 $_SESSION['userid'] = $userResult[0][0];
+				$_SESSION['dogid'] = $dogResult[0][0];
+				$dogid = $_SESSION['dogid']
                 $_SESSION["username"] = $_POST["user"];
                 $_SESSION['loggedin'] = true;
 
