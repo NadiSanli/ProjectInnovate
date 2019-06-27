@@ -110,21 +110,21 @@
         <div class="logo">
             <img src="images/logo.png">
         </div>
-        <div class="addmessage">
+        <div class="profile_form">
             <form class="form_signup" method="POST" action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" enctype="multipart/form-data">
                 <p>Dog Name:</p>
-                <p><input type="text" name="dogName" class="main-button"/></p>
+                <p><input type="text" name="dogName" class="text-input"/></p>
 
                 <p>Profile Description:</p>
-                <textarea rows="5" cols="50" name="desc" class="main-text"><?php echo $descCurrent[0][0] ?></textarea>
+                <textarea rows="5" cols="50" name="desc" class="textarea-input"><?php echo $descCurrent[0][0] ?></textarea>
 
                 <p>Dog Age:</p>
-                <p><input type="number" name="age" min="1" max="100" class ="main-button" value="1"></p>
+                <p><input type="number" name="age" min="1" max="100" class ="number-input" value="1"></p>
 
                 <p>Profile Picture:</p>
-                <p><input type="file" name="image" class="main-button"/></p>
+                <p><input type="file" name="image" class="image-input"/></p>
 
-                <p><input type="submit" value="Submit" name="submit" class="main-button"/></p>
+                <p><input type="submit" value="Submit" name="submit" class="submit-button"/></p>
             </form>
         </div>
     </div>

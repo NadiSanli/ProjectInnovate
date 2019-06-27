@@ -101,39 +101,39 @@
         <div class="addmessage">
             <form class="form_signup" method="POST" action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" enctype="multipart/form-data">
                 <p>Username:</p>
-                <p><input type="text" name="user" class="main-button"/></p>
+                <p><input type="text" name="user" class="text-input"/></p>
 
                 <p>Password:</p>
-                <p><input type="password" name="pass" class="main-button"/></p>
+                <p><input type="password" name="pass" class="pass-input"/></p>
 
                 <p>Email:</p>
-                <p><input type="email" name="email" class="main-button"/></p>
+                <p><input type="email" name="email" class="email-input"/></p>
 
                 <p>First Name:</p>
-                <p><input type="text" name="firstName" class="main-button"/></p>
+                <p><input type="text" name="firstName" class="text-input"/></p>
 
                 <p>Last Name:</p>
-                <p><input type="text" name="lastName" class="main-button"/></p>
+                <p><input type="text" name="lastName" class="text-input"/></p>
 
                 <p>Dog Name:</p>
-                <p><input type="text" name="dogName" class="main-button"/></p>
+                <p><input type="text" name="dogName" class="text-input"/></p>
 
                 <p>Profile Description:</p>
-                <textarea rows="5" cols="50" name="desc" class="main-text"></textarea>
+                <textarea rows="5" cols="50" name="desc" class="textarea-input"></textarea>
 
                 <p>Dog Age:</p>
-                <p><input type="number" name="age" min="1" max="100" class ="main-button" value="1"></p>
+                <p><input type="number" name="age" min="1" max="100" class ="number-input" value="1"></p>
 
                 <p>Sex:</p>
-                <p><select name="sex" class="main-button">
+                <p><select name="sex" class="dropdown-input">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select></p>
 
                 <p>Profile Picture:</p>
-                <p><input type="file" name="image" class="main-button"/></p>
+                <p><input type="file" name="image" class="image-input"/></p>
 
-                <p><input type="submit" value="Submit" name="register_user" class="main-button"/></p>
+                <p><input type="submit" value="Submit" name="register_user" class="submit-button"/></p>
             </form>
         </div>
     </div>

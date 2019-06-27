@@ -27,7 +27,7 @@
                 $_SESSION['userid'] = $userResult[0][0];
                 $_SESSION["username"] = $_POST["user"];
                 $_SESSION['loggedin'] = true;
-                
+
 
                 header("Location: index.php");
             } else {
@@ -55,15 +55,15 @@
         <div class="logo">
             <img src="images/logo.png">
         </div>
-        <div class="addmessage">
+        <div class="login_form">
             <form class="form_signup" method="POST" action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>">
                 <p>Username:</p>
-                <p><input type="text" name="user" class="main-button"/></p>
+                <p><input type="text" name="user" class="text-input"/></p>
 
                 <p>Password:</p>
-                <p><input type="password" name="pass" class="main-button"/></p>
+                <p><input type="password" name="pass" class="text-input"/></p>
 
-                <p><input type="submit" value="Submit" name="login_user" class="main-button"/></p>
+                <p><input type="submit" value="Submit" name="login_user" class="submit-button"/></p>
             </form>
         </div>
     </div>

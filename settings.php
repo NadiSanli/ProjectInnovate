@@ -57,13 +57,13 @@
         <div class="addmessage">
             <form class="form_signup" method="POST" action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>">
                 <p>Distance:</p>
-                <p><input type="number" name="distance" min="1" max="100" class ="main-button" value="1"></p>
+                <p><input type="number" name="distance" min="1" max="100" class ="number-input" value="1"></p>
 
                 <p>Age:</p>
-                <p><input type="number" name="age" min="1" max="100" class ="main-button" value="1"></p>
+                <p><input type="number" name="age" min="1" max="100" class ="number-input" value="1"></p>
 
                 <p>Breed:</p>
-                <p><select name ="breed" class="main-button">
+                <p><select name ="breed" class="dropdown-input">
                     <option value="Affenpinscher">Affenpinscher</option>
                     <option value="Afghan hound">Afghan hound</option>
                     <option value="Airedale terrier">Airedale terrier</option>
@@ -198,13 +198,13 @@
                 </select></p>
 
                 <p>Sex:</p>
-                <p><select name="sex" class="main-button">
+                <p><select name="sex" class="dropdown-input">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                 </select></p>
 
 
-                <p><input type="submit" value="Submit" name="submit" class="main-button"/></p>
+                <p><input type="submit" value="Submit" name="submit" class="submit-button"/></p>
             </form>
         </div>
     </div>
