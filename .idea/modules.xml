@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ProjectInnovate.iml" filepath="$PROJECT_DIR$/.idea/ProjectInnovate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Breedr/.idea/Breedr.iml" filepath="$PROJECT_DIR$/../Breedr/.idea/Breedr.iml" />
     </modules>
   </component>
 </project>
