@@ -59,7 +59,7 @@ if($db = new PDO('mysql:host=localhost;dbname=breedr;charset=utf8', 'root', ''))
                     echo $count;
                 }else{
                     echo 'bruh';
-                    //header('Location: swipeNearby.php');
+                    header('Location: swipeNearby.php');
                 }
             }elseif((isset($_POST['like']) || isset($_POST['dislike'])) && $count >= $maxcount ){
                 echo 'cant reach this';
